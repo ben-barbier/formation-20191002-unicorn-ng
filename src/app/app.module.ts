@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UnicornListComponent } from './pages/unicorn-list/unicorn-list.component';
+import { UnicornCardComponent } from './pages/unicorn-list/unicorn-card/unicorn-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        UnicornListComponent,
+        UnicornCardComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
