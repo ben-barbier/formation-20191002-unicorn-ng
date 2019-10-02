@@ -8,19 +8,33 @@ import { UnicornCardComponent } from './pages/unicorn-list/unicorn-card/unicorn-
 import { HttpClientModule } from '@angular/common/http';
 import { MagicalNamePipe } from './shared/pipes/magical-name.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material';
+import { NavComponent } from './shared/components/nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     declarations: [
         AppComponent,
         UnicornListComponent,
         UnicornCardComponent,
-        MagicalNamePipe
+        MagicalNamePipe,
+        NavComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        MatIconModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
