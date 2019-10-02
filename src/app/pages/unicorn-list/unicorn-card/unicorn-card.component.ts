@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Unicorn } from '../../../shared/models/unicorn.model';
 
 @Component({
     selector: 'fld-unicorn-card',
@@ -8,16 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UnicornCardComponent implements OnInit {
 
     @Input()
-    public titre: string;
+    public unicorn: Unicorn;
 
     constructor() {
-        console.log(this.titre);
-        debugger;
     }
 
     ngOnInit() {
-        console.log(this.titre);
-        debugger;
     }
 
     public alertTitre(titre: string) {

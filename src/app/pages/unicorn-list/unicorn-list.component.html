@@ -1,4 +1,4 @@
-<fld-unicorn-card [titre]="'coucou 🚀'"></fld-unicorn-card>
-<pre>
-    {{ unicorns | json }}
-</pre>
+<fld-unicorn-card
+    *ngFor="let unicorn of unicorns"
+    [unicorn]="unicorn">
+</fld-unicorn-card>

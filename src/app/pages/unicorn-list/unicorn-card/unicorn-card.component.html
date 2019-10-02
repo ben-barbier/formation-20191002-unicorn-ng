@@ -1,2 +1,7 @@
-<p>unicorn-card works!</p>
-<span (click)="alertTitre(titre)">{{ titre }}</span>
+<div (click)="alertTitre(unicorn.name)">
+    <div>{{ unicorn.id }}</div>
+    <div>{{ unicorn.name }}</div>
+    <div>
+        <img [src]="unicorn.photo" alt="🦄">
+    </div>
+</div>
