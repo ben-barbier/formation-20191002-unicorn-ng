@@ -1,6 +1,6 @@
 <div (click)="alertTitre(unicorn.name)">
     <div>{{ unicorn.id }}</div>
-    <div>{{ unicorn.name }}</div>
+    <div>{{ unicorn.name | magicalName }}</div>
     <div>
         <img [src]="unicorn.photo" alt="🦄">
     </div>
