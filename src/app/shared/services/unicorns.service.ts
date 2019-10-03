@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EMPTY, from, Observable } from 'rxjs';
+import { forkJoin, from, Observable } from 'rxjs';
 import { Unicorn } from '../models/unicorn.model';
 import { flatMap, map, mergeMap, pluck, toArray } from 'rxjs/operators';
 import { CapacitiesService } from './capacities.service';
@@ -34,6 +34,18 @@ export class UnicornsService {
                 );
             }),
             toArray(),
+        );
+    }
+
+    public getAllWithCapacitiesLabels2(): Observable<Unicorn[]> {
+        return forkJoin([
+            this.getAll(),
+            this.capacitiesService.getAll(),
+        ]).pipe(
+            map(([unicorns, capacities]) => unicorns.map(unicorn => ({
+                ...unicorn,
+                capacityLabels: unicorn.capacities.map(id => capacities.find(c => c.id === id).label)
+            }))),
         );
     }
 

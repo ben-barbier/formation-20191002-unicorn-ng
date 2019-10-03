@@ -15,4 +15,7 @@ export class CapacitiesService {
         return this.http.get<Capacity>(`http://localhost:3000/capacities/${id}`);
     }
 
+    public getAll(): Observable<Capacity[]> {
+        return this.http.get<Capacity[]>(`http://localhost:3000/capacities`);
+    }
 }
