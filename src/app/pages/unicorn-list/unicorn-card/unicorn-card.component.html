@@ -1,7 +1,21 @@
-<div (click)="alertTitre(unicorn.name)">
-    <div><mat-icon>fireplace</mat-icon>{{ unicorn.id }}</div>
-    <div>{{ unicorn.name | magicalName }}</div>
-    <div>
-        <img [src]="unicorn.photo" alt="🦄">
-    </div>
-</div>
+<mat-card class="example-card">
+    <mat-card-header>
+        <img mat-card-avatar [src]="unicorn.photo" alt="🦄">
+        <mat-card-title>{{ unicorn.name | magicalName }}</mat-card-title>
+        <mat-card-subtitle>{{ unicorn.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="unicorn.photo" alt="🦄">
+    <mat-card-content>
+        <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-mini-fab color="primary"><mat-icon>favorite</mat-icon></button>
+        <button mat-mini-fab color="primary"><mat-icon>visibility</mat-icon></button>
+        <button mat-mini-fab color="primary"><mat-icon>delete</mat-icon></button>
+        <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+    </mat-card-actions>
+</mat-card>

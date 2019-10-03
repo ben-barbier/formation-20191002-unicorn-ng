@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material';
+import { MatCardModule, MatIconModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
         MatButtonModule,
         MatSidenavModule,
         MatListModule,
+        MatCardModule,
     ],
 })
 export class MaterialModule {
