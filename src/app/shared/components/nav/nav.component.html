@@ -21,6 +21,8 @@
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
             <span>unicorn-ng (age moyen : {{ averageAge$ | async }})</span>
+            <span class="spacer"></span>
+            <mat-icon>favorite</mat-icon> x {{ (cart$ | async).length }}
         </mat-toolbar>
         <!-- Add Content Here -->
         <fld-unicorn-list></fld-unicorn-list>

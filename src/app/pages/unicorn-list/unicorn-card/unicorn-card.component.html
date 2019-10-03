@@ -9,7 +9,7 @@
         <p> {{ unicorn.capacityLabels | json }} </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-mini-fab color="primary"><mat-icon>favorite</mat-icon></button>
+        <button mat-mini-fab [color]="favoriteColor" (click)="toggleToCart()"><mat-icon>favorite</mat-icon></button>
         <button mat-mini-fab color="primary"><mat-icon>visibility</mat-icon></button>
         <button mat-mini-fab color="primary"><mat-icon>delete</mat-icon></button>
         <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>

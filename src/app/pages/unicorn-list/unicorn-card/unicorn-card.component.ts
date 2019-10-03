@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Unicorn } from '../../../shared/models/unicorn.model';
+import { CartService } from '../../../shared/services/cart.service';
+import { ThemePalette } from '@angular/material';
 
 @Component({
     selector: 'fld-unicorn-card',
@@ -10,14 +12,24 @@ export class UnicornCardComponent implements OnInit {
 
     @Input()
     public unicorn: Unicorn;
+    public favoriteColor: ThemePalette;
 
-    constructor() {
+    constructor(private cartService: CartService) {
     }
 
-    ngOnInit() {
+    public ngOnInit(): void {
+        this.favoriteColor = this.cartService.isInCart(this.unicorn) ? 'warn' : 'primary';
     }
 
-    public alertTitre(titre: string) {
-        alert(titre);
+    public toggleToCart(): void {
+        if (this.cartService.isInCart(this.unicorn)) {
+            this.cartService.removeFromCart(this.unicorn);
+            this.favoriteColor = 'primary';
+        } else {
+            this.cartService.addToCart(this.unicorn);
+            this.favoriteColor = 'warn';
+        }
     }
+
+
 }

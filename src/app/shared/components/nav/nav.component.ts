@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { UnicornsService } from '../../services/unicorns.service';
+import { CartService } from '../../services/cart.service';
+import { Unicorn } from '../../models/unicorn.model';
 
 @Component({
     selector: 'fld-nav',
@@ -12,6 +14,7 @@ import { UnicornsService } from '../../services/unicorns.service';
 export class NavComponent {
 
     public averageAge$ = this.unicornsService.getAverageAge();
+    public cart$ = this.cartService.cart;
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
         .pipe(
@@ -20,7 +23,9 @@ export class NavComponent {
         );
 
     constructor(private breakpointObserver: BreakpointObserver,
-                private unicornsService: UnicornsService) {
+                private unicornsService: UnicornsService,
+                private cartService: CartService,
+    ) {
     }
 
 }
