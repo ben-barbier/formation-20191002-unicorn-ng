@@ -49,4 +49,13 @@ export class UnicornsService {
         );
     }
 
+    public getAverageAge(): Observable<number> {
+        return this.getAll().pipe(
+            flatMap(e => e),
+            map(u => new Date().getFullYear() - u.birthyear),
+            toArray(),
+            map(ages => ages.reduce((acc, age) => acc + age, 0) / ages.length),
+        );
+    }
+
 }

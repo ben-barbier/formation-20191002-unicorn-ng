@@ -20,7 +20,7 @@
                 *ngIf="isHandset$ | async">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
-            <span>unicorn-ng</span>
+            <span>unicorn-ng (age moyen : {{ averageAge$ | async }})</span>
         </mat-toolbar>
         <!-- Add Content Here -->
         <fld-unicorn-list></fld-unicorn-list>
