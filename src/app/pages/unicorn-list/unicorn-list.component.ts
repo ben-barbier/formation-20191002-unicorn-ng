@@ -12,7 +12,7 @@ export class UnicornListComponent {
     public unicorns: Unicorn[];
 
     constructor(unicornsService: UnicornsService) {
-        unicornsService.getAll().subscribe(unicorns => this.unicorns = unicorns);
+        unicornsService.getAllWithCapacitiesLabels().subscribe(unicorns => this.unicorns = unicorns);
     }
 
 }
