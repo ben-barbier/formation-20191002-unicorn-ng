@@ -58,4 +58,7 @@ export class UnicornsService {
         );
     }
 
+    public getUnicorn(id: string): Observable<Unicorn> {
+        return this.http.get<Unicorn>(`http://localhost:3000/unicorns/${id}`);
+    }
 }

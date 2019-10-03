@@ -1,0 +1,11 @@
+<pre>{{ unicorn$ | async | json }}</pre>
+
+<button mat-raised-button color="primary"
+        [routerLink]="['/unicorn-details', (unicorn$ | async)?.id - 1]">
+    Previous
+</button>
+
+<button mat-raised-button color="primary"
+        [routerLink]="['/unicorn-details', (unicorn$ | async)?.id + 1]">
+    Next
+</button>

@@ -9,6 +9,7 @@ import { MagicalNamePipe } from './shared/pipes/magical-name.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { MaterialModule } from './shared/modules/material.module';
+import { UnicornDetailsComponent } from './pages/unicorn-details/unicorn-details.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { MaterialModule } from './shared/modules/material.module';
         UnicornListComponent,
         UnicornCardComponent,
         MagicalNamePipe,
-        NavComponent
+        NavComponent,
+        UnicornDetailsComponent
     ],
     imports: [
         BrowserModule,
