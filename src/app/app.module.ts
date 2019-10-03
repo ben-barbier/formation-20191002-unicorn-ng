@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UnicornListComponent } from './pages/unicorn-list/unicorn-list.component';
@@ -8,13 +7,8 @@ import { UnicornCardComponent } from './pages/unicorn-list/unicorn-card/unicorn-
 import { HttpClientModule } from '@angular/common/http';
 import { MagicalNamePipe } from './shared/pipes/magical-name.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material';
 import { NavComponent } from './shared/components/nav/nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
+import { MaterialModule } from './shared/modules/material.module';
 
 @NgModule({
     declarations: [
@@ -29,12 +23,7 @@ import { MatListModule } from '@angular/material/list';
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        MatIconModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatListModule,
+        MaterialModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
