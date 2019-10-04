@@ -11,7 +11,7 @@
     <mat-card-actions>
         <button mat-mini-fab [color]="favoriteColor" (click)="toggleToCart()"><mat-icon>favorite</mat-icon></button>
         <button mat-mini-fab color="primary" [routerLink]="['/unicorn-details', unicorn.id]"><mat-icon>visibility</mat-icon></button>
-        <button mat-mini-fab color="primary"><mat-icon>delete</mat-icon></button>
+        <button mat-mini-fab color="primary" (click)="deleteUnicorn()"><mat-icon>delete</mat-icon></button>
         <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
     </mat-card-actions>
 </mat-card>

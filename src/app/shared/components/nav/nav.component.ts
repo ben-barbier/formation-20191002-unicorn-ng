@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { UnicornsService } from '../../services/unicorns.service';
 import { CartService } from '../../services/cart.service';
-import { Unicorn } from '../../models/unicorn.model';
+import * as moment from 'moment';
 
 @Component({
     selector: 'fld-nav',
@@ -15,6 +15,7 @@ export class NavComponent {
 
     public averageAge$ = this.unicornsService.getAverageAge();
     public cart$ = this.cartService.cart;
+    public today = moment().format('DD MM YYYY');
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
         .pipe(

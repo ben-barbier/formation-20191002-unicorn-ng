@@ -1,4 +1,5 @@
 <fld-unicorn-card
     *ngFor="let unicorn of unicorns"
-    [unicorn]="unicorn">
+    [unicorn]="unicorn"
+    (deleted)="removeUnicornFromList($event)">
 </fld-unicorn-card>

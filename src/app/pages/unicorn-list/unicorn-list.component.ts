@@ -15,4 +15,7 @@ export class UnicornListComponent {
         unicornsService.getAllWithCapacitiesLabels2().subscribe(unicorns => this.unicorns = unicorns);
     }
 
+    public removeUnicornFromList(unicornToRemove: Unicorn) {
+        this.unicorns = this.unicorns.filter(u => u.id !== unicornToRemove.id);
+    }
 }

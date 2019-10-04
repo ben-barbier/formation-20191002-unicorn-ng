@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Unicorn } from '../../../shared/models/unicorn.model';
 import { CartService } from '../../../shared/services/cart.service';
 import { ThemePalette } from '@angular/material';
+import { UnicornsService } from '../../../shared/services/unicorns.service';
 
 @Component({
     selector: 'fld-unicorn-card',
@@ -12,9 +13,15 @@ export class UnicornCardComponent implements OnInit {
 
     @Input()
     public unicorn: Unicorn;
+
+    @Output()
+    public deleted = new EventEmitter<Unicorn>();
+
     public favoriteColor: ThemePalette;
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService,
+                private unicornService: UnicornsService,
+    ) {
     }
 
     public ngOnInit(): void {
@@ -31,5 +38,9 @@ export class UnicornCardComponent implements OnInit {
         }
     }
 
-
+    public deleteUnicorn() {
+        this.unicornService.deleteUnicorn(this.unicorn).subscribe(() =>
+            this.deleted.emit(this.unicorn)
+        );
+    }
 }
