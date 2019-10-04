@@ -12,6 +12,9 @@ import { MaterialModule } from './shared/modules/material.module';
 import { UnicornDetailsComponent } from './pages/unicorn-details/unicorn-details.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import * as fromCart from './store/reducers/cart.reducer';
+import * as fromUnicorns from './store/reducers/unicorns.reducer';
 
 @NgModule({
     declarations: [
@@ -23,12 +26,21 @@ import { environment } from '../environments/environment';
         UnicornDetailsComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({appId: 'serverApp'}),
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
         MaterialModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        StoreModule.forRoot({
+            cart: fromCart.reducer,
+            unicorns: fromUnicorns.reducer,
+        }, {
+            runtimeChecks: {
+                strictStateImmutability: true,
+                strictActionImmutability: true
+            }
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]

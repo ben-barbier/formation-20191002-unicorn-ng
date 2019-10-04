@@ -3,6 +3,7 @@ import { Unicorn } from '../../../shared/models/unicorn.model';
 import { CartService } from '../../../shared/services/cart.service';
 import { ThemePalette } from '@angular/material';
 import { UnicornsService } from '../../../shared/services/unicorns.service';
+import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'fld-unicorn-card',
@@ -25,17 +26,19 @@ export class UnicornCardComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.favoriteColor = this.cartService.isInCart(this.unicorn) ? 'warn' : 'primary';
+        this.cartService.isInCart(this.unicorn).subscribe(
+            isInCart => this.favoriteColor = isInCart ? 'warn' : 'primary'
+        );
     }
 
     public toggleToCart(): void {
-        if (this.cartService.isInCart(this.unicorn)) {
-            this.cartService.removeFromCart(this.unicorn);
-            this.favoriteColor = 'primary';
-        } else {
-            this.cartService.addToCart(this.unicorn);
-            this.favoriteColor = 'warn';
-        }
+        this.cartService.isInCart(this.unicorn).pipe(first()).subscribe(isInCart => {
+            if (isInCart) {
+                this.cartService.removeFromCart(this.unicorn);
+            } else {
+                this.cartService.addToCart(this.unicorn);
+            }
+        });
     }
 
     public deleteUnicorn() {
