@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import * as fromCart from './store/reducers/cart.reducer';
 import * as fromUnicorns from './store/reducers/unicorns.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,9 @@ import * as fromUnicorns from './store/reducers/unicorns.reducer';
                 strictStateImmutability: true,
                 strictActionImmutability: true
             }
+        }),
+        StoreDevtoolsModule.instrument({
+            maxAge: 10
         }),
     ],
     providers: [],
