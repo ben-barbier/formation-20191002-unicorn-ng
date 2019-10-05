@@ -19,6 +19,7 @@ export class UnicornCardComponent implements OnInit {
     public deleted = new EventEmitter<Unicorn>();
 
     public favoriteColor: ThemePalette;
+    private isInCart: boolean;
 
     constructor(private cartService: CartService,
                 private unicornService: UnicornsService,
@@ -26,19 +27,18 @@ export class UnicornCardComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.cartService.isInCart(this.unicorn).subscribe(
-            isInCart => this.favoriteColor = isInCart ? 'warn' : 'primary'
-        );
+        this.cartService.isInCart(this.unicorn).subscribe(isInCart => {
+            this.favoriteColor = isInCart ? 'warn' : 'primary';
+            this.isInCart = isInCart;
+        });
     }
 
     public toggleToCart(): void {
-        this.cartService.isInCart(this.unicorn).pipe(first()).subscribe(isInCart => {
-            if (isInCart) {
-                this.cartService.removeFromCart(this.unicorn);
-            } else {
-                this.cartService.addToCart(this.unicorn);
-            }
-        });
+        if (this.isInCart) {
+            this.cartService.removeFromCart(this.unicorn);
+        } else {
+            this.cartService.addToCart(this.unicorn);
+        }
     }
 
     public deleteUnicorn() {
